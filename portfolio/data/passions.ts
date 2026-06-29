@@ -31,7 +31,7 @@ export const passions: Passion[] = [
     title: "Tennis",
     tagline: "Consistency beats flash.",
     story:
-      "Tennis taught me that consistency beats flash. It's a game of staying calm under pressure and out-lasting the moment. It's a stress buster for me, and I try to hit the court three times a day. I'm just a text away for the next game — whether you're the best at this sport or it's your first time, I'd love to play. I started playing in 2017 and won a tournament early on; that positive feedback loop kept me going. But I only got consistent after I moved to California, and I believe I'm a 3.5 now.",
+      "Tennis taught me that consistency beats flash. It's a game of staying calm under pressure and out-lasting the moment. It's a stress buster for me, and I try to hit the court three times a week. I'm just a text away for the next game — whether you're the best at this sport or it's your first time, I'd love to play. I started playing in 2017 and won a tournament early on; that positive feedback loop kept me going. But I only got consistent after I moved to California, and I believe I'm a 3.5 now.",
     media: {
       type: "video",
       src: "/passions/tennis.mp4",
@@ -41,7 +41,7 @@ export const passions: Passion[] = [
     },
     stats: [
       { label: "Playing since", value: "2017" },
-      { label: "On court", value: "3×/day" },
+      { label: "On court", value: "3×/week" },
       { label: "Level", value: "NTRP 3.5" },
     ],
   },

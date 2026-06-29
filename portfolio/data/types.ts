@@ -1,0 +1,113 @@
+/**
+ * Shared data types for the portfolio.
+ * Every section reads from a typed array/object in /data so content stays
+ * decoupled from presentation. Skills (.cursor/skills/portfolio-*) edit these.
+ */
+
+export type SocialLink = {
+  label: string;
+  href: string;
+  /** lucide-react icon name, resolved in components/icon.tsx */
+  icon: "github" | "linkedin" | "mail" | "instagram" | "twitter" | "globe";
+};
+
+export type Profile = {
+  name: string;
+  shortName: string;
+  role: string;
+  location: string;
+  /** One-line hook shown large in the hero. */
+  headline: string;
+  /** Supporting paragraph under the headline. */
+  summary: string;
+  availability?: string;
+  resumeUrl?: string;
+  email: string;
+  /** Profile/cover photo, e.g. /dhiraj_profile.jpg */
+  photo?: string;
+  socials: SocialLink[];
+};
+
+export type Experience = {
+  id: string;
+  company: string;
+  role: string;
+  team?: string;
+  location: string;
+  start: string;
+  end: string; // "Present" allowed
+  /** Short, impact-first bullets. */
+  highlights: string[];
+  stack?: string[];
+  /** Optional brand/logo color used for the timeline node. */
+  accent?: string;
+  /** Company logo, e.g. /companies/google.png */
+  logo?: string;
+};
+
+export type Person = {
+  id: string;
+  name: string;
+  title: string;
+  relationship: string; // e.g. "Manager at Google", "Collaborator"
+  quote: string;
+  avatar?: string; // /people/foo.jpg or remote URL
+  href?: string; // LinkedIn / profile link
+};
+
+export type PassionStat = {
+  label: string;
+  value: string;
+};
+
+export type Passion = {
+  id: string;
+  title: string;
+  tagline: string;
+  /** Long-form, first-person blog/story text (kept in the user's own voice). */
+  story: string;
+  /** Hero image or video. Use type to switch rendering. */
+  media?: {
+    type: "image" | "video";
+    src: string;
+    poster?: string;
+    alt?: string;
+    /**
+     * Optional video trim. Values in (0,1] are treated as a fraction of the
+     * video's duration; values > 1 are treated as seconds. The clip loops
+     * between start and end.
+     */
+    start?: number;
+    end?: number;
+  };
+  stats: PassionStat[];
+  links?: { label: string; href: string }[];
+};
+
+export type Goal = {
+  id: string;
+  title: string;
+  description: string;
+  horizon: string; // e.g. "2026", "Long-term"
+  status: "exploring" | "in-progress" | "done";
+};
+
+export type Thought = {
+  id: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  href?: string;
+  tags?: string[];
+};
+
+export type Project = {
+  id: string;
+  title: string;
+  description: string;
+  stack: string[];
+  year?: string;
+  repo?: string;
+  demo?: string;
+  featured?: boolean;
+};

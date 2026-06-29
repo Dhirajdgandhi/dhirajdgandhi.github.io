@@ -43,4 +43,4 @@ The `story` must sound like the user. Capture their phrasing; lightly polish onl
 with their OK. Don't fabricate stats — ask for real numbers or leave "Add".
 
 ## Then
-Save, run `npm run build` in `portfolio/`.
+Save, then publish with `./build-site.sh` from the repo root (see `portfolio-update`).

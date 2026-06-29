@@ -26,4 +26,4 @@ Ask: the goal, a one-line why/what, the time horizon, and current status. Use
 Keep it in the user's words and ambition level — don't inflate or genericize.
 
 ## Then
-Append (or update an existing goal's `status`), run `npm run build` in `portfolio/`.
+Append (or update an existing goal's `status`), then publish with `./build-site.sh` from the repo root (see `portfolio-update`).

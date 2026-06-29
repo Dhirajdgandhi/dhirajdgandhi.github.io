@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Dhiraj D. Gandhi's portfolio" />
+        <meta name="author" content="Dhiraj Deelip Gandhi" />
+        <meta property="og:url" content="https://dhirajdgandhi.github.io" />
+        <meta property="og:image" content="https://dhirajdgandhi.github.io//assets/img/header-bg.jpg">
+
+        <title>Dhiraj Deelip Gandhi - Portfolio</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="js/http_use.fontawesome.com_releases_v5.13.0_js_all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+
+
+        <!-- Include Files -->
+        <script>
+            function includeHTML() {
+                var z, i, elmnt, file, xhttp;
+                /* Loop through a collection of all HTML elements: */
+                z = document.getElementsByTagName("*");
+                for (i = 0; i < z.length; i++) {
+                    elmnt = z[i];
+                    /*search for elements with a certain atrribute:*/
+                    file = elmnt.getAttribute("w3-include-html");
+                    if (file) {
+                        /* Make an HTTP request using the attribute value as the file name: */
+                        xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function() {
+                            if (this.readyState == 4) {
+                                if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                                if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                                /* Remove the attribute, and call this function once more: */
+                                elmnt.removeAttribute("w3-include-html");
+                                includeHTML();
+                            }
+                        }
+                        xhttp.open("GET", file, true);
+                        xhttp.send();
+                        /* Exit the function: */
+                        return;
+                    }
+                }
+            }
+        </script>
+
+        <!-- Google Ads -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9580116323411537"
+     crossorigin="anonymous"></script>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">
+<!--                    <img src="assets/img/navbar-logo.svg" alt="" />-->
+                    Dhiraj Deelip Gandhi
+                </a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ml-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ml-auto">
+<!--                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>-->
+
+                    
+
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#workexperience">WorkEx</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#resume">Resume</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#recommendations">Recommendations</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#passion">Passion</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="https://www.linkedin.com/in/dhirajdgandhi/" target="_blank">LinkedIn</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="https://github.com/Dhirajdgandhi" target="_blank">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-subheading">Hey there!</div>
+                <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
+                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#about">Know more about me</a>
+            </div>
+        </header>
+
+        <!--Services-->
+<!--        <div w3-include-html="sections/services.html"></div>-->
+
+        <!-- About-->
+        <div w3-include-html="sections/about.html"></div>
+
+        <!-- Portfolio Grid-->
+        <div w3-include-html="sections/projects/projects.html"></div>
+
+        <!-- Work Experience -->
+        <div w3-include-html="sections/work-experience.html"></div>
+
+        <!-- Education -->
+        <div w3-include-html="sections/education.html"></div>
+
+        <!-- Team-->
+<!--        <div w3-include-html="sections/team.html"></div>-->
+
+        <!-- Clients-->
+<!--        <div w3-include-html="sections/clients.html"></div>-->
+
+        <!-- Contact-->
+        <!-- <div w3-include-html="sections/contact.html"></div> -->
+
+        <!--Resume-->
+        <div w3-include-html="sections/resume.html"></div>
+
+        <!--Recommendations-->
+        <div w3-include-html="sections/recommendations.html"></div>
+
+        <!-- Passion -->
+        <div w3-include-html="sections/passion.html"></div>
+
+        <!-- Footer-->
+        <div w3-include-html="sections/footer.html"></div>
+
+
+
+        <!-- Bootstrap core JS-->
+        <script src="js/http_cdnjs.cloudflare.com_ajax_libs_jquery_3.5.1_jquery.js"></script>
+        <script src="js/http_stackpath.bootstrapcdn.com_bootstrap_4.5.0_js_bootstrap.bundle.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="js/http_cdnjs.cloudflare.com_ajax_libs_jquery-easing_1.4.1_jquery.easing.js"></script>
+        <!-- Contact form JS-->
+        <script src="assets/mail/jqBootstrapValidation.js"></script>
+<!--        <script src="assets/mail/contact_me.js"></script>-->
+
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+
+        <script>
+            includeHTML();
+        </script>
+
+    </body>
+</html>

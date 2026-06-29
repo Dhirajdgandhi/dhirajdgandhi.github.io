@@ -30,4 +30,4 @@ A quote from another person is **verbatim** — never reword it. Only fix obviou
 typos with the user's OK.
 
 ## Then
-Append the object, run `npm run build` in `portfolio/`.
+Append the object, then publish with `./build-site.sh` from the repo root (see `portfolio-update`).

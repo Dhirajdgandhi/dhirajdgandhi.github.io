@@ -33,4 +33,4 @@ Keep bullets in the user's words; tighten to impact-first phrasing only with
 their OK. Don't invent metrics — ask "any numbers you want to include?"
 
 ## Then
-Prepend the new object, keep types valid, run `npm run build` in `portfolio/`.
+Prepend the new object, keep types valid, then publish with `./build-site.sh` from the repo root (see `portfolio-update`).

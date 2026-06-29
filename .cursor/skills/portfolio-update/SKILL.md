@@ -74,12 +74,25 @@ elsewhere).
 Append (or prepend, for reverse-chronological sections like experience/thoughts)
 a new typed object. Give it a unique, kebab-case `id`. Keep TypeScript valid.
 
-### 6. Verify
-From `portfolio/`, run `npm run build` (or rely on the running `npm run dev`).
-Fix any type/lint errors. Report what changed and where.
+### 6. Verify & publish
+- Preview: from `portfolio/`, run `npm run dev` (http://localhost:3000) or
+  `npm run build` to catch type/lint errors.
+- **Publish the live site:** the actual site is a *static export* served from
+  the repo root (GitHub Pages). After editing data, run `./build-site.sh` from
+  the repo root to re-export and copy the build to the root. The user then
+  commits & pushes.
+- Report what changed and where.
+
+## How this site is deployed
+- Source of truth = the Next.js app in `portfolio/`.
+- The repo root holds the **built static output** (`index.html`, `_next/`,
+  route folders like `experience/`, plus assets). GitHub Pages serves it as
+  plain static files — no npm at runtime. A `.nojekyll` file at the root is
+  required so `_next/` is served.
+- The old hand-coded site is archived in `legacy-site/` (ignore it).
+- Always edit `portfolio/data/*.ts`, never the generated root files; then
+  re-run `./build-site.sh`.
 
 ## Notes
-- The dev server may already be running on http://localhost:3000.
-- Don't touch the user's other site at `dhirajdgandhi.github.io`.
 - If the user describes something that doesn't fit an existing section, ask
   whether to add it to the closest section or propose a new one.

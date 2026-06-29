@@ -30,4 +30,4 @@ This is the user thinking out loud — preserve their phrasing and point of view
 Polish only with their OK; never replace their take with a generic one.
 
 ## Then
-Prepend the object, run `npm run build` in `portfolio/`.
+Prepend the object, then publish with `./build-site.sh` from the repo root (see `portfolio-update`).

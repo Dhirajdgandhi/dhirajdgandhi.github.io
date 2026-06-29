@@ -28,4 +28,4 @@ whether to feature it.
 Keep the description in the user's voice — concrete over buzzwordy. Don't overclaim.
 
 ## Then
-Append (or prepend if newest), run `npm run build` in `portfolio/`.
+Append (or prepend if newest), then publish with `./build-site.sh` from the repo root (see `portfolio-update`).

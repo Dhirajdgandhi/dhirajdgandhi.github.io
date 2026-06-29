@@ -22,6 +22,8 @@ export type Profile = {
   summary: string;
   availability?: string;
   resumeUrl?: string;
+  /** Public scheduling link (e.g. Google Calendar appointments) for 1:1 booking. */
+  bookingUrl?: string;
   email: string;
   /** Profile/cover photo, e.g. /dhiraj_profile.jpg */
   photo?: string;
@@ -66,19 +68,29 @@ export type Passion = {
   tagline: string;
   /** Long-form, first-person blog/story text (kept in the user's own voice). */
   story: string;
-  /** Hero image or video. Use type to switch rendering. */
+  /** Hero image, local video, or YouTube embed. Use type to switch rendering. */
   media?: {
-    type: "image" | "video";
+    type: "image" | "video" | "youtube";
+    /** Image/video path, or a YouTube URL or video id when type is "youtube". */
     src: string;
     poster?: string;
     alt?: string;
     /**
-     * Optional video trim. Values in (0,1] are treated as a fraction of the
-     * video's duration; values > 1 are treated as seconds. The clip loops
-     * between start and end.
+     * How the media fills its box. "cover" (default) crops to fill; "contain"
+     * shows the whole asset, framed — use for screenshots/cards.
+     */
+    fit?: "cover" | "contain";
+    /**
+     * Start (and optional end) time. For local video, values in (0,1] are a
+     * fraction of duration and the clip loops between start/end. For YouTube,
+     * these are seconds passed to the player.
      */
     start?: number;
     end?: number;
+    /** Optional caption shown under the media. */
+    caption?: string;
+    /** Optional extra images shown as a strip/grid beneath the hero media. */
+    gallery?: { src: string; alt?: string }[];
   };
   stats: PassionStat[];
   links?: { label: string; href: string }[];

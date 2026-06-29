@@ -15,18 +15,33 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const shareDescription =
+  "Hey, this is Dhiraj — visit to see what I do in my daily life, and happy to connect with you.";
+
 export const metadata: Metadata = {
-  title: `${profile.name} — ${profile.role}`,
-  description: profile.summary,
+  metadataBase: new URL("https://dhirajdgandhi.github.io"),
+  title: "Dhiraj Gandhi",
+  description: shareDescription,
   openGraph: {
-    title: `${profile.name} — ${profile.role}`,
-    description: profile.headline,
+    title: "Dhiraj Gandhi",
+    description: shareDescription,
+    url: "https://dhirajdgandhi.github.io",
+    siteName: "Dhiraj Gandhi",
     type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Dhiraj Gandhi",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: profile.name,
-    description: profile.headline,
+    title: "Dhiraj Gandhi",
+    description: shareDescription,
+    images: ["/og.png"],
   },
 };
 

@@ -2,6 +2,23 @@ import type { Experience } from "./types";
 
 export const experience: Experience[] = [
   {
+    id: "sofia-mba",
+    company: "Sofia University",
+    role: "MBA",
+    team: "Business Administration · Leadership",
+    location: "Palo Alto, CA",
+    start: "2026",
+    end: "Present",
+    highlights: [
+      "Transpersonal Psychology — leading with self-awareness and growing beyond the ego.",
+      "Operations — designing systems and processes that scale.",
+      "Marketing — understanding what people truly need, and how to win over stakeholders.",
+    ],
+    stack: ["Leadership", "Psychology", "Operations", "Marketing"],
+    accent: "#6B2FA0",
+    logo: "/companies/sofia.png",
+  },
+  {
     id: "google",
     company: "Google",
     role: "Software Engineer (ML)",

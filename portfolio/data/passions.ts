@@ -12,9 +12,10 @@ export const passions: Passion[] = [
     story:
       "Dance is where I switch off the engineer brain and just feel. I've performed Bollywood and hip-hop on stage — from college cult nights to Google stages. The reps, the choreography, the nerves before going on: it's the same loop as building software, just with more sweat and louder applause.",
     media: {
-      type: "image",
-      src: "/passions/dance.jpg",
-      alt: "Dhiraj performing on stage",
+      type: "youtube",
+      src: "https://www.youtube.com/watch?v=SC1XXnYLfvA",
+      start: 5,
+      caption: "My most viewed video so far — 53K and counting.",
     },
     stats: [
       { label: "Years dancing", value: "10+" },
@@ -67,11 +68,18 @@ export const passions: Passion[] = [
     title: "Connection building",
     tagline: "People first. Relationships compound.",
     story:
-      "I believe the best opportunities and the best work come from genuine relationships. I love connecting people, hosting, and being the person who follows up. This is the throughline across everything I do — turning a one-time conversation into a long-term connection.",
+      "I believe the best opportunities and the best work come from genuine relationships. I love connecting people, hosting, and being the person who follows up. This is the throughline across everything I do — turning a one-time conversation into a long-term connection. Most recently, I got to help bring my VNIT college community together at the Alumni Association's Bay Area chapter.",
     media: {
       type: "image",
-      src: "/passions/connection.jpg",
-      alt: "With friends and community",
+      src: "/passions/vnit-aa-self.png",
+      alt: "Speaking at the VNIT Alumni Association Bay Area Chapter launch, 2026",
+      caption: "Kicking off the VNIT Alumni Association — Bay Area Chapter, 2026.",
+      gallery: [
+        {
+          src: "/passions/vnit-aa-group.png",
+          alt: "VNIT alumni gathered at the Bay Area chapter meetup",
+        },
+      ],
     },
     stats: [],
   },
@@ -83,8 +91,9 @@ export const passions: Passion[] = [
       "I spend about 3 hours a week guiding juniors — career advice, mentorship, mock interviews, and resume reviews. Resume review is something I believe I understand really well: I love helping people tell their story in a way top tech companies actually respond to. If that's useful to you, you can book a session with me on Topmate.",
     media: {
       type: "image",
-      src: "/passions/mentorship.jpg",
-      alt: "Mentoring and career guidance sessions",
+      src: "/passions/topmate.png",
+      alt: "Dhiraj's Topmate mentorship profile",
+      fit: "contain",
     },
     stats: [
       { label: "Time given", value: "3 hrs/week" },

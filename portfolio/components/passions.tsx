@@ -7,6 +7,16 @@ import { passions } from "@/data/passions";
 import { cn } from "@/lib/utils";
 import { Section } from "./section";
 
+/** Pull the 11-char video id out of any common YouTube URL (or a bare id). */
+function youTubeId(input: string): string {
+  const direct = input.match(/^[\w-]{11}$/);
+  if (direct) return input;
+  const m = input.match(
+    /(?:youtu\.be\/|v=|\/embed\/|\/shorts\/)([\w-]{11})/
+  );
+  return m ? m[1] : input;
+}
+
 function Media({
   media,
   title,
@@ -24,6 +34,23 @@ function Media({
           {title}
         </span>
       </div>
+    );
+  }
+
+  if (media.type === "youtube") {
+    const id = youTubeId(media.src);
+    const params = new URLSearchParams({ rel: "0", modestbranding: "1" });
+    if (media.start != null) params.set("start", String(Math.floor(media.start)));
+    if (media.end != null) params.set("end", String(Math.floor(media.end)));
+    return (
+      <iframe
+        className="h-full w-full"
+        src={`https://www.youtube.com/embed/${id}?${params.toString()}`}
+        title={media.alt ?? title}
+        loading="lazy"
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+      />
     );
   }
 
@@ -70,13 +97,23 @@ function Media({
   }
 
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={media.src}
-      alt={media.alt ?? title}
-      className="h-full w-full object-cover"
-      onError={() => setErrored(true)}
-    />
+    <div
+      className={cn(
+        "flex h-full w-full items-center justify-center",
+        media.fit === "contain" && "bg-surface"
+      )}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={media.src}
+        alt={media.alt ?? title}
+        className={cn(
+          "h-full w-full",
+          media.fit === "contain" ? "object-contain" : "object-cover"
+        )}
+        onError={() => setErrored(true)}
+      />
+    </div>
   );
 }
 
@@ -118,10 +155,40 @@ export function Passions() {
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           className="grid gap-8 lg:grid-cols-[1.1fr_1fr]"
         >
-          <div className="overflow-hidden rounded-2xl border border-border">
-            <div className="aspect-[4/3] w-full">
-              <Media media={current.media} title={current.title} />
+          <div className="flex flex-col gap-3">
+            <div className="overflow-hidden rounded-2xl border border-border">
+              <div className="aspect-[4/3] w-full">
+                <Media media={current.media} title={current.title} />
+              </div>
+              {current.media?.caption && (
+                <p className="border-t border-border bg-surface px-4 py-2.5 text-xs text-muted-strong">
+                  {current.media.caption}
+                </p>
+              )}
             </div>
+
+            {current.media?.gallery && current.media.gallery.length > 0 && (
+              <div
+                className={cn(
+                  "grid gap-3",
+                  current.media.gallery.length > 1 ? "grid-cols-2" : "grid-cols-1"
+                )}
+              >
+                {current.media.gallery.map((g) => (
+                  <div
+                    key={g.src}
+                    className="aspect-[2/1] overflow-hidden rounded-xl border border-border"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={g.src}
+                      alt={g.alt ?? current.title}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="flex flex-col">

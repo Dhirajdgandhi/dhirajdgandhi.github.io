@@ -3,11 +3,12 @@ name: portfolio-update
 description: >-
   Add or update content on Dhiraj's personal portfolio (the Next.js app in
   portfolio/). Use whenever the user says they did something new and want it on
-  their site/portfolio — a new job/role, a recommendation or person they worked
-  with, a passion update (dance, tennis, skiing, connection building), a new
-  goal, a thought/post, or a side-project. Routes to the right section skill,
-  interviews the user, refines copy in their own voice, collects image/video
-  links, edits the typed data file, and verifies the build.
+  their site/portfolio — a new job/role or degree, a recommendation or person
+  they worked with, a passion update (dance, tennis, skiing, connection,
+  mentorship), a new goal, a thought/post, or a side-project. Works from a
+  single freeform text prompt: classifies it to the right section(s), extracts
+  media links/timestamps/captions, organizes it into the typed fields, refines
+  copy in the user's own voice, edits the data file, and rebuilds.
 ---
 
 # Portfolio Update
@@ -21,15 +22,40 @@ user explicitly asks for a design change.
 
 | The user is adding… | Data file | Section skill |
 |---|---|---|
-| A job / role | `portfolio/data/experience.ts` | `portfolio-experience` |
+| A job / role / degree / education | `portfolio/data/experience.ts` | `portfolio-experience` |
 | A person / recommendation | `portfolio/data/people.ts` | `portfolio-people` |
-| A passion update (dance, tennis, skiing, connection) | `portfolio/data/passions.ts` | `portfolio-passion` |
+| A passion update (dance, tennis, skiing, connection, mentorship) | `portfolio/data/passions.ts` | `portfolio-passion` |
 | A goal | `portfolio/data/goals.ts` | `portfolio-goal` |
 | A thought / note / post | `portfolio/data/thoughts.ts` | `portfolio-thought` |
 | A technical side project | `portfolio/data/projects.ts` | `portfolio-project` |
+| Name / role / share-description / preview photo | `portfolio/data/profile.ts` + `app/layout.tsx` | (see "Social share preview") |
 
 Types for every entry are in `portfolio/data/types.ts` — read it first so the
 object you add matches the shape exactly.
+
+## Working from a single freeform prompt
+
+The user usually just pastes a sentence or two ("add my MBA at Sofia, started
+2026, courses X/Y/Z" or "put this YouTube video in the dance tab, caption: 53K
+views, start at 5s"). Turn that into well-organized content **without making them
+fill a form**:
+
+1. **Classify** the prompt to one (or more) sections using the map above. A
+   single prompt can touch several sections — handle each (e.g. an MBA goes in
+   *experience* AND can seed a *goal*). If it clearly fits nothing, ask.
+2. **Extract structured bits** from the text yourself:
+   - **Media links** — YouTube/Vimeo/Instagram URLs, image/video links, or a
+     filename they dropped in. Decide image vs. video vs. youtube (see Media).
+   - **Timestamps** — "start at 5s", "0:05–0:25" → `start`/`end`.
+   - **Caption** — any "caption: …" or aside like "my most-viewed, 53K" →
+     `media.caption`.
+   - **Stats / numbers / dates** → the section's `stats`/`start`/`horizon`/etc.
+   - **The story / bullets** → the prose field, kept in their voice.
+3. **Infer placement**: reverse-chronological sections (experience, thoughts)
+   get prepended; tabs/lists keep a sensible order. Give a unique kebab `id`.
+4. **Only ask what you truly can't infer** (one short batch). Don't re-ask for
+   things already in the prompt. Pick sensible defaults and state them.
+5. Edit the data file(s), then rebuild (step 6).
 
 ## The standard workflow (every section follows this)
 
@@ -60,15 +86,36 @@ This is the user's personal site. **Keep their words.**
 - Never invent achievements, numbers, or quotes.
 
 ### 4. Media
-Ask for an image or video link for sections that support it (passions; optional
-elsewhere).
+Sections with a `media` object (passions) support three kinds. Pick the right
+`type`:
+
+| Source the user gives | `type` | `src` | Extras |
+|---|---|---|---|
+| Image file/URL | `"image"` | `/passions/<file>` or URL | `fit`, `caption` |
+| Local video file | `"video"` | `/passions/<file>` | `start`/`end` trim, `poster`, `caption` |
+| YouTube link | `"youtube"` | full URL **or** the 11-char id | `start`/`end` seconds, `caption` |
+
 - **Local file**: tell the user to drop it in `portfolio/public/<section>/`
   (e.g. `portfolio/public/passions/skiing.jpg`) and set `src` to
-  `/<section>/<file>` (leading slash, no `public`).
-- **Remote URL** (Instagram, YouTube, a CDN): for passions, links go in the
-  `links: []` array; for a hero image use a direct image/video URL as `src`.
-- If no media yet, leave `media` out — the UI shows a clean gradient fallback.
-- Videos use `type: "video"`; images use `type: "image"`.
+  `/<section>/<file>` (leading slash, no `public`). Copy it there yourself if
+  it's already somewhere in the repo.
+- **YouTube**: use `type: "youtube"`; the component extracts the id from any
+  `watch?v=`, `youtu.be/`, `/embed/`, or `/shorts/` URL. "start at 5s" →
+  `start: 5`; a range → `start`/`end` (seconds). Plays with controls (not muted
+  autoplay) so sound works.
+- **`fit`**: default `"cover"` crops to fill the 4:3 box. Use `"contain"` for
+  screenshots/cards that must show fully (e.g. the Topmate card) — it frames the
+  asset on a surface background instead of cropping.
+- **`caption`**: a short line shown under the media (e.g. "My most viewed video
+  — 53K and counting"). Pull it straight from the prompt.
+- **`gallery`**: extra images shown beneath the hero — `[{ src, alt }]`. Use
+  when the user gives **multiple photos** for one item (e.g. a "self" + "group"
+  pair); the hero is the most personal/representative shot, the rest go here.
+- **`start`/`end`**: for local video, values in (0,1] are a fraction of the
+  duration and the clip loops; for YouTube they're plain seconds.
+- Other post links (Instagram, articles) that aren't the hero still go in the
+  `links: []` array.
+- If no media yet, omit `media` — the UI shows a clean gradient fallback.
 
 ### 5. Edit
 Append (or prepend, for reverse-chronological sections like experience/thoughts)
@@ -92,6 +139,31 @@ a new typed object. Give it a unique, kebab-case `id`. Keep TypeScript valid.
 - The old hand-coded site is archived in `legacy-site/` (ignore it).
 - Always edit `portfolio/data/*.ts`, never the generated root files; then
   re-run `./build-site.sh`.
+
+## Social share preview (the link card)
+
+When someone shares the site (iMessage/Slack/LinkedIn/X), the preview comes from
+Open Graph metadata in `portfolio/app/layout.tsx` plus a baked image at
+`portfolio/public/og.png` (1200×630).
+
+- **Text only** (title / description): edit the `metadata` object's
+  `title`, `description`, `openGraph`, and `twitter` fields in `app/layout.tsx`,
+  then rebuild. Keep the absolute `metadataBase` so `og:image` resolves.
+- **Regenerate the image** (new photo, name, role, or tagline on the card):
+  1. Make a lean source photo: `sips --resampleWidth 900 <photo> --out portfolio/public/og-photo.jpg`.
+  2. Temporarily create `portfolio/app/opengraph-image.tsx` using `next/og`'s
+     `ImageResponse` (must include `export const dynamic = "force-static"` for
+     static export). Read the photo via `fs` and embed as a base64 `<img>`; lay
+     out photo-left / text-right at 1200×630.
+  3. `npm run build`, then copy the rendered file to a real, extensioned asset:
+     `cp out/opengraph-image portfolio/public/og.png` (it's PNG bytes).
+  4. **Delete** `app/opengraph-image.tsx` and `og-photo.jpg`, point
+     `metadata.openGraph.images`/`twitter.images` at `/og.png`, and rebuild.
+- Why bake to `og.png`? GitHub Pages serves Next's extensionless
+  `/opengraph-image` route with the wrong content-type, so crawlers reject it. A
+  real `.png` referenced by absolute URL works everywhere.
+- After publishing, re-scrape via LinkedIn Post Inspector / opengraph.xyz —
+  platforms cache aggressively.
 
 ## Notes
 - If the user describes something that doesn't fit an existing section, ask

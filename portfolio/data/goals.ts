@@ -10,6 +10,14 @@ export const goals: Goal[] = [
     status: "in-progress",
   },
   {
+    id: "goal-mba",
+    title: "Grow as a leader through my MBA",
+    description:
+      "Pairing engineering with business at Sofia University — operations, marketing, and the transpersonal work of leading beyond the ego.",
+    horizon: "2026",
+    status: "in-progress",
+  },
+  {
     id: "goal-2",
     title: "Go deeper on applied ML systems",
     description:

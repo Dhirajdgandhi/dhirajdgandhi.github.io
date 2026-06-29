@@ -79,12 +79,14 @@ export function Hero() {
           {profile.headline}
         </motion.h1>
 
-        <motion.p
+        <motion.div
           variants={item}
-          className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
+          className="mt-6 max-w-xl space-y-4 text-base leading-relaxed text-muted sm:text-lg"
         >
-          {profile.summary}
-        </motion.p>
+          {profile.summary.split(/\n{2,}/).map((para, i) => (
+            <p key={i}>{para}</p>
+          ))}
+        </motion.div>
 
         <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-3">
           <Link

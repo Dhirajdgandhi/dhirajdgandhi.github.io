@@ -122,4 +122,6 @@ export type Project = {
   repo?: string;
   demo?: string;
   featured?: boolean;
+  /** UI preview image, e.g. /projects/uninex.png */
+  image?: string;
 };

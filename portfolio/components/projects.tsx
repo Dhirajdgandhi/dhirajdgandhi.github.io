@@ -15,7 +15,19 @@ export function Projects() {
     >
       {projects.map((p, i) => (
         <Reveal key={p.id} delayIndex={i} className="h-full">
-          <article className="group relative flex h-full flex-col rounded-2xl border border-border bg-background p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-border-strong hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,0.18)]">
+          <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-background transition-all duration-300 hover:-translate-y-1.5 hover:border-border-strong hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,0.18)]">
+            {p.image && (
+              <div className="aspect-[16/10] w-full overflow-hidden border-b border-border bg-surface">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={p.image}
+                  alt={`${p.title} preview`}
+                  loading="lazy"
+                  className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+              </div>
+            )}
+            <div className="flex flex-1 flex-col p-6">
             <div className="flex items-start justify-between gap-3">
               <h3 className="text-lg font-semibold tracking-tight">{p.title}</h3>
               {p.year && (
@@ -63,6 +75,7 @@ export function Projects() {
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </a>
               )}
+            </div>
             </div>
           </article>
         </Reveal>

@@ -5,6 +5,17 @@ import type { Project } from "./types";
  */
 export const projects: Project[] = [
   {
+    id: "uninex",
+    title: "UniNex",
+    description:
+      "An AI-orchestrated alumni platform where students, professors, and alumni converge to share knowledge, fund innovation, and build what's next — with searchable alumni, AI mentorship matching, and one-click Stripe giving.",
+    stack: ["Next.js", "AI", "Stripe", "OAuth"],
+    year: "2026",
+    demo: "https://uninex.studentportal.live/",
+    image: "/projects/uninex.png",
+    featured: true,
+  },
+  {
     id: "decision-trees",
     title: "Decision Trees Visualizer",
     description:

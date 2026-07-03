@@ -5,6 +5,24 @@ import type { Thought } from "./types";
  */
 export const thoughts: Thought[] = [
   {
+    id: "thought-4",
+    title: "What makes me grounded — lessons from Jainism",
+    excerpt:
+      "Ahimsa parmo dharma: do not hurt anyone, knowingly or unknowingly. I have 3 cousins who took diksha — a lifelong monastic vow. No money, no home, no family, no going back. That's my benchmark for detachment. And honestly? It reframes everything.",
+    date: "2026",
+    tags: ["life", "philosophy"],
+    href: "#",
+  },
+  {
+    id: "thought-5",
+    title: "Upvaas — why fasting is good for the body and the mind",
+    excerpt:
+      "The bacteria die when they're not fed. The mind stops craving when you stop feeding it. Hours or days of fasting — the way we practice it — isn't deprivation. It's a reset. I'm going to write more on this.",
+    date: "2026",
+    tags: ["life", "health"],
+    href: "#",
+  },
+  {
     id: "thought-1",
     title: "Why I optimize for relationships over transactions",
     excerpt:

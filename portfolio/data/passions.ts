@@ -84,6 +84,27 @@ export const passions: Passion[] = [
     stats: [],
   },
   {
+    id: "vipassana",
+    title: "Vipassana",
+    tagline: "10 days of silence. One of the most life-changing things I've ever done.",
+    story:
+      "I did my 10-day Vipassana course at Dhamma Giri in Igatpuri — one of the world's largest Vipassana centres, tucked into the hills of Maharashtra. No phone, no laptop, no talking, no eye contact. Waking up at 4 AM, lights out at 9 PM. Dinner was a small snack — they say an empty stomach helps you focus on the mind, and I believe it. Those 10 days were genuinely one of the most life-changing experiences I've had. It made me extremely grounded as a person. It taught me the right way to meditate — not just sitting with eyes closed, but actually observing sensation without reaction. The routine was one of the best I've ever lived. I'm going to write much more about this very soon.",
+    media: {
+      type: "image",
+      src: "/passions/vipassana-dhammagiri.jpg",
+      alt: "Dhamma Giri — Vipassana International Academy, Igatpuri",
+      caption: "Dhamma Giri — Vipassana International Academy, Igatpuri, Maharashtra.",
+    },
+    stats: [
+      { label: "Duration", value: "10 days" },
+      { label: "Centre", value: "Dhamma Giri, Igatpuri" },
+      { label: "Daily schedule", value: "4 AM – 9 PM" },
+    ],
+    links: [
+      { label: "Learn about Vipassana", href: "https://www.dhamma.org" },
+    ],
+  },
+  {
     id: "mentorship",
     title: "Mentorship",
     tagline: "Paying it forward, one session at a time.",

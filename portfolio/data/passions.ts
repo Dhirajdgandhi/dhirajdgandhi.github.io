@@ -88,15 +88,15 @@ export const passions: Passion[] = [
     title: "Hackathons",
     tagline: "Focused building. The startup energy I crave.",
     story:
-      "I've been to AGI House in Hillsboro a couple of times in the last six months — and in December 2025, we won the Gemini & Grafonai Hackathon, where our team built a multi-agent orchestration system for video editing. Really cool stuff.\n\nThe reason I keep going is simple: hackathons give you that rare, focused environment where you sit down and actually build. No endless meetings, no roadmap debates — just you, your team, and a problem to solve in 24 hours using everything that's available. That kind of intensity is something I genuinely miss in big tech. Startups have it naturally. Hackathons replicate it for a weekend.\n\nI'm a builder at heart. Hackathons are how I stay sharp, learn new tools fast, and ship something real.\n\nIf you want to team up, tag along, or know of a great hackathon coming up — shoot me an email or connect on LinkedIn. I'd love to build something together.",
+      "I've been to AGI House in Hillsboro a couple of times in the last six months — and in December 2025, we won the Gemini & Graphon AI Hackathon, where our team built a multi-agent orchestration system for video editing. Really cool stuff.\n\nThe reason I keep going is simple: hackathons give you that rare, focused environment where you sit down and actually build. No endless meetings, no roadmap debates — just you, your team, and a problem to solve in 24 hours using everything that's available. That kind of intensity is something I genuinely miss in big tech. Startups have it naturally. Hackathons replicate it for a weekend.\n\nI'm a builder at heart. Hackathons are how I stay sharp, learn new tools fast, and ship something real.\n\nIf you want to team up, tag along, or know of a great hackathon coming up — shoot me an email or connect on LinkedIn. I'd love to build something together.",
     media: {
       type: "image",
       src: "/passions/hackathon-grokathon-dec2025.jpg",
-      alt: "Winning team at the Gemini & Grafonai Hackathon, AGI House, December 2025",
-      caption: "Winning team at Gemini & Grafonai Hackathon — AGI House, December 2025.",
+      alt: "Winning team at the Gemini & Graphon AI Hackathon, AGI House, December 2025",
+      caption: "Winning team at Gemini & Graphon AI Hackathon — AGI House, December 2025.",
     },
     stats: [
-      { label: "Recent wins", value: "Gemini & Grafonai Hackathon '25" },
+      { label: "Recent wins", value: "Gemini & Graphon AI Hackathon '25" },
       { label: "Venue", value: "AGI House, Hillsboro" },
       { label: "Built", value: "Multi-agent video editing" },
     ],
